@@ -16,22 +16,8 @@
 
 package org.springframework.boot.autoconfigure;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.Aware;
 import org.springframework.beans.factory.BeanClassLoaderAware;
@@ -56,6 +42,19 @@ import org.springframework.core.type.classreading.MetadataReaderFactory;
 import org.springframework.util.Assert;
 import org.springframework.util.ClassUtils;
 import org.springframework.util.StringUtils;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 /**
  * {@link DeferredImportSelector} to handle {@link EnableAutoConfiguration
@@ -355,7 +354,7 @@ public class AutoConfigurationImportSelector
 			for (AutoConfigurationImportListener listener : listeners) {
 				// 这里调用各种Aware方法用于触发事件前赋值，比如设置factory,environment等
 				invokeAwareMethods(listener);
-				// 真正触发AutoConfigurationImportEvent事件即回调listener的onXXXEveent方法。这里用于记录自动配置类的评估信息
+				// 真正触发AutoConfigurationImportEvent事件即回调listener的onXXXEvent方法。这里用于记录自动配置类的评估信息
 				listener.onAutoConfigurationImportEvent(event);
 			}
 		}
